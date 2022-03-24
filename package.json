@@ -4,7 +4,10 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "DEBUG=@neo4j/graphql:* tsnd ./src/index.ts --respawn --transpileOnly",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "tsnd ./src/index.ts --respawn --transpileOnly",
+    "dev:debug": "DEBUG=@neo4j/graphql:* tsnd ./src/index.ts --respawn --transpileOnly",
     "core-api:generate-types": "GENERATE=true npx ts-node --project ./tsconfig.json ./src/api/gql/generate-types.ts"
   },
   "dependencies": {
