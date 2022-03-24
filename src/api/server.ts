@@ -13,10 +13,10 @@ export async function startServer() {
   });
 
   await new Promise<void>((resolve) =>
-    nodeServer.listen({ port: 4000 }, resolve)
+    nodeServer.listen({ port: process.env.PORT || 4000 }, resolve)
   );
 
   console.log(
-    `🚀 Server ready at http://localhost:4000${graphqlServer.graphqlPath}`
+    `🚀 Server ready at http://:${process.env.PORT}${graphqlServer.graphqlPath}`
   );
 }
