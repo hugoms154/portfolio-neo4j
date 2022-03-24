@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "start": "DEBUG=@neo4j/graphql:* tsnd ./src/index.ts --respawn --transpileOnly",
-    "core-api:generate-types": "GENERATE=true npx ts-node --project ./tsconfig.json ./src/generate-types.ts"
+    "core-api:generate-types": "GENERATE=true npx ts-node --project ./tsconfig.json ./src/api/gql/generate-types.ts"
   },
   "dependencies": {
     "@neo4j/graphql": "^3.0.2",
@@ -13,10 +13,13 @@
     "apollo-server": "^3.6.5",
     "apollo-server-core": "^3.6.5",
     "apollo-server-express": "^3.6.5",
+    "cookie-parser": "^1.4.6",
+    "express": "^4.17.3",
     "graphql": "^16.3.0",
     "neo4j-driver": "^4.4.4"
   },
   "devDependencies": {
+    "@types/cookie-parser": "^1.4.2",
     "ts-node-dev": "^1.1.8",
     "typescript": "^4.6.2"
   }

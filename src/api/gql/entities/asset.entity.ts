@@ -1,0 +1,17 @@
+import { gql } from "apollo-server-core";
+
+export const typeDefs = gql`
+  type Asset {
+    id: ID! @id
+    ticker: String!
+    price: Float!
+    category: AssetCategory
+      @relationship(type: "HAS_ASSET_CATEGORY", direction: OUT)
+    sector: AssetSector @relationship(type: "HAS_ASSET_SECTOR", direction: OUT)
+    segment: AssetSegment
+      @relationship(type: "HAS_ASSET_SEGMENT", direction: OUT)
+    createdAt: DateTime!
+    updatedAt: DateTime!
+    active: Boolean!
+  }
+`;
