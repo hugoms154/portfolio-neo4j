@@ -1,12 +1,12 @@
 import { gql } from "apollo-server-core";
 
 export const typeDefs = gql`
-  type AssetCategory {
+  type AssetCategory implements BaseEntity {
     id: ID! @id
     name: String!
     assets: [Asset!]! @relationship(type: "HAS_ASSET_CATEGORY", direction: IN)
-    createdAt: DateTime!
-    updatedAt: DateTime!
+    createdAt: DateTime @timestamp
+    updatedAt: DateTime @timestamp
     active: Boolean!
   }
 `;

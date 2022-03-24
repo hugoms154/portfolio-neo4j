@@ -1,7 +1,7 @@
 import { gql } from "apollo-server-core";
 
 export const typeDefs = gql`
-  type Asset {
+  type Asset implements BaseEntity {
     id: ID! @id
     ticker: String!
     price: Float!
@@ -10,8 +10,8 @@ export const typeDefs = gql`
     sector: AssetSector @relationship(type: "HAS_ASSET_SECTOR", direction: OUT)
     segment: AssetSegment
       @relationship(type: "HAS_ASSET_SEGMENT", direction: OUT)
-    createdAt: DateTime!
-    updatedAt: DateTime!
+    createdAt: DateTime @timestamp
+    updatedAt: DateTime @timestamp
     active: Boolean!
   }
 `;

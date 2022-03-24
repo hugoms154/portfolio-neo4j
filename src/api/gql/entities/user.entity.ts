@@ -1,7 +1,7 @@
 import { gql } from "apollo-server-core";
 
 export const typeDefs = gql`
-  type User {
+  type User implements BaseEntity {
     id: ID! @id
     email: String!
     name: String!
@@ -9,7 +9,7 @@ export const typeDefs = gql`
     portfolio: [Portfolio!]!
       @relationship(type: "HAS_PORTFOLIO", direction: OUT)
     active: Boolean!
-    createdAt: DateTime!
-    updatedAt: DateTime!
+    createdAt: DateTime @timestamp
+    updatedAt: DateTime @timestamp
   }
 `;

@@ -239,14 +239,21 @@ export enum SortDirection {
   Desc = "DESC",
 }
 
-export type Asset = {
+export type BaseEntity = {
+  id: Scalars["ID"];
+  active: Scalars["Boolean"];
+  createdAt?: Maybe<Scalars["DateTime"]>;
+  updatedAt?: Maybe<Scalars["DateTime"]>;
+};
+
+export type Asset = BaseEntity & {
   __typename?: "Asset";
   id: Scalars["ID"];
   ticker: Scalars["String"];
   price: Scalars["Float"];
   active: Scalars["Boolean"];
-  createdAt: Scalars["DateTime"];
-  updatedAt: Scalars["DateTime"];
+  createdAt?: Maybe<Scalars["DateTime"]>;
+  updatedAt?: Maybe<Scalars["DateTime"]>;
   category?: Maybe<AssetCategory>;
   categoryAggregate?: Maybe<AssetAssetCategoryCategoryAggregationSelection>;
   sector?: Maybe<AssetSector>;
@@ -321,8 +328,8 @@ export type AssetAggregateSelection = {
   id: IdAggregateSelectionNonNullable;
   ticker: StringAggregateSelectionNonNullable;
   price: FloatAggregateSelectionNonNullable;
-  createdAt: DateTimeAggregateSelectionNonNullable;
-  updatedAt: DateTimeAggregateSelectionNonNullable;
+  createdAt: DateTimeAggregateSelectionNullable;
+  updatedAt: DateTimeAggregateSelectionNullable;
 };
 
 export type AssetAssetCategoryCategoryAggregationSelection = {
@@ -335,8 +342,8 @@ export type AssetAssetCategoryCategoryNodeAggregateSelection = {
   __typename?: "AssetAssetCategoryCategoryNodeAggregateSelection";
   id: IdAggregateSelectionNonNullable;
   name: StringAggregateSelectionNonNullable;
-  createdAt: DateTimeAggregateSelectionNonNullable;
-  updatedAt: DateTimeAggregateSelectionNonNullable;
+  createdAt: DateTimeAggregateSelectionNullable;
+  updatedAt: DateTimeAggregateSelectionNullable;
 };
 
 export type AssetAssetSectorSectorAggregationSelection = {
@@ -349,8 +356,8 @@ export type AssetAssetSectorSectorNodeAggregateSelection = {
   __typename?: "AssetAssetSectorSectorNodeAggregateSelection";
   id: IdAggregateSelectionNonNullable;
   name: StringAggregateSelectionNonNullable;
-  createdAt: DateTimeAggregateSelectionNonNullable;
-  updatedAt: DateTimeAggregateSelectionNonNullable;
+  createdAt: DateTimeAggregateSelectionNullable;
+  updatedAt: DateTimeAggregateSelectionNullable;
 };
 
 export type AssetAssetSegmentSegmentAggregationSelection = {
@@ -363,17 +370,17 @@ export type AssetAssetSegmentSegmentNodeAggregateSelection = {
   __typename?: "AssetAssetSegmentSegmentNodeAggregateSelection";
   id: IdAggregateSelectionNonNullable;
   name: StringAggregateSelectionNonNullable;
-  createdAt: DateTimeAggregateSelectionNonNullable;
-  updatedAt: DateTimeAggregateSelectionNonNullable;
+  createdAt: DateTimeAggregateSelectionNullable;
+  updatedAt: DateTimeAggregateSelectionNullable;
 };
 
-export type AssetCategory = {
+export type AssetCategory = BaseEntity & {
   __typename?: "AssetCategory";
   id: Scalars["ID"];
   name: Scalars["String"];
   active: Scalars["Boolean"];
-  createdAt: Scalars["DateTime"];
-  updatedAt: Scalars["DateTime"];
+  createdAt?: Maybe<Scalars["DateTime"]>;
+  updatedAt?: Maybe<Scalars["DateTime"]>;
   assets: Array<Asset>;
   assetsAggregate?: Maybe<AssetCategoryAssetAssetsAggregationSelection>;
   assetsConnection: AssetCategoryAssetsConnection;
@@ -403,8 +410,8 @@ export type AssetCategoryAggregateSelection = {
   count: Scalars["Int"];
   id: IdAggregateSelectionNonNullable;
   name: StringAggregateSelectionNonNullable;
-  createdAt: DateTimeAggregateSelectionNonNullable;
-  updatedAt: DateTimeAggregateSelectionNonNullable;
+  createdAt: DateTimeAggregateSelectionNullable;
+  updatedAt: DateTimeAggregateSelectionNullable;
 };
 
 export type AssetCategoryAssetAssetsAggregationSelection = {
@@ -418,8 +425,8 @@ export type AssetCategoryAssetAssetsNodeAggregateSelection = {
   id: IdAggregateSelectionNonNullable;
   ticker: StringAggregateSelectionNonNullable;
   price: FloatAggregateSelectionNonNullable;
-  createdAt: DateTimeAggregateSelectionNonNullable;
-  updatedAt: DateTimeAggregateSelectionNonNullable;
+  createdAt: DateTimeAggregateSelectionNullable;
+  updatedAt: DateTimeAggregateSelectionNullable;
 };
 
 export type AssetCategoryAssetsConnection = {
@@ -448,13 +455,13 @@ export type AssetCategoryRelationship = {
   node: AssetCategory;
 };
 
-export type AssetSector = {
+export type AssetSector = BaseEntity & {
   __typename?: "AssetSector";
   id: Scalars["ID"];
   name: Scalars["String"];
   active: Scalars["Boolean"];
-  createdAt: Scalars["DateTime"];
-  updatedAt: Scalars["DateTime"];
+  createdAt?: Maybe<Scalars["DateTime"]>;
+  updatedAt?: Maybe<Scalars["DateTime"]>;
   assets: Array<Asset>;
   assetsAggregate?: Maybe<AssetSectorAssetAssetsAggregationSelection>;
   assetsConnection: AssetSectorAssetsConnection;
@@ -484,8 +491,8 @@ export type AssetSectorAggregateSelection = {
   count: Scalars["Int"];
   id: IdAggregateSelectionNonNullable;
   name: StringAggregateSelectionNonNullable;
-  createdAt: DateTimeAggregateSelectionNonNullable;
-  updatedAt: DateTimeAggregateSelectionNonNullable;
+  createdAt: DateTimeAggregateSelectionNullable;
+  updatedAt: DateTimeAggregateSelectionNullable;
 };
 
 export type AssetSectorAssetAssetsAggregationSelection = {
@@ -499,8 +506,8 @@ export type AssetSectorAssetAssetsNodeAggregateSelection = {
   id: IdAggregateSelectionNonNullable;
   ticker: StringAggregateSelectionNonNullable;
   price: FloatAggregateSelectionNonNullable;
-  createdAt: DateTimeAggregateSelectionNonNullable;
-  updatedAt: DateTimeAggregateSelectionNonNullable;
+  createdAt: DateTimeAggregateSelectionNullable;
+  updatedAt: DateTimeAggregateSelectionNullable;
 };
 
 export type AssetSectorAssetsConnection = {
@@ -529,13 +536,13 @@ export type AssetSectorRelationship = {
   node: AssetSector;
 };
 
-export type AssetSegment = {
+export type AssetSegment = BaseEntity & {
   __typename?: "AssetSegment";
   id: Scalars["ID"];
   name: Scalars["String"];
   active: Scalars["Boolean"];
-  createdAt: Scalars["DateTime"];
-  updatedAt: Scalars["DateTime"];
+  createdAt?: Maybe<Scalars["DateTime"]>;
+  updatedAt?: Maybe<Scalars["DateTime"]>;
   assets: Array<Asset>;
   assetsAggregate?: Maybe<AssetSegmentAssetAssetsAggregationSelection>;
   assetsConnection: AssetSegmentAssetsConnection;
@@ -565,8 +572,8 @@ export type AssetSegmentAggregateSelection = {
   count: Scalars["Int"];
   id: IdAggregateSelectionNonNullable;
   name: StringAggregateSelectionNonNullable;
-  createdAt: DateTimeAggregateSelectionNonNullable;
-  updatedAt: DateTimeAggregateSelectionNonNullable;
+  createdAt: DateTimeAggregateSelectionNullable;
+  updatedAt: DateTimeAggregateSelectionNullable;
 };
 
 export type AssetSegmentAssetAssetsAggregationSelection = {
@@ -580,8 +587,8 @@ export type AssetSegmentAssetAssetsNodeAggregateSelection = {
   id: IdAggregateSelectionNonNullable;
   ticker: StringAggregateSelectionNonNullable;
   price: FloatAggregateSelectionNonNullable;
-  createdAt: DateTimeAggregateSelectionNonNullable;
-  updatedAt: DateTimeAggregateSelectionNonNullable;
+  createdAt: DateTimeAggregateSelectionNullable;
+  updatedAt: DateTimeAggregateSelectionNullable;
 };
 
 export type AssetSegmentAssetsConnection = {
@@ -653,10 +660,10 @@ export type CreateUsersMutationResponse = {
   users: Array<User>;
 };
 
-export type DateTimeAggregateSelectionNonNullable = {
-  __typename?: "DateTimeAggregateSelectionNonNullable";
-  min: Scalars["DateTime"];
-  max: Scalars["DateTime"];
+export type DateTimeAggregateSelectionNullable = {
+  __typename?: "DateTimeAggregateSelectionNullable";
+  min?: Maybe<Scalars["DateTime"]>;
+  max?: Maybe<Scalars["DateTime"]>;
 };
 
 export type DeleteInfo = {
@@ -689,13 +696,13 @@ export type PageInfo = {
   endCursor?: Maybe<Scalars["String"]>;
 };
 
-export type Portfolio = {
+export type Portfolio = BaseEntity & {
   __typename?: "Portfolio";
   id: Scalars["ID"];
   name: Scalars["String"];
   active: Scalars["Boolean"];
-  createdAt: Scalars["DateTime"];
-  updatedAt: Scalars["DateTime"];
+  createdAt?: Maybe<Scalars["DateTime"]>;
+  updatedAt?: Maybe<Scalars["DateTime"]>;
   user?: Maybe<User>;
   userAggregate?: Maybe<PortfolioUserUserAggregationSelection>;
   assets: Array<Asset>;
@@ -747,8 +754,8 @@ export type PortfolioAggregateSelection = {
   count: Scalars["Int"];
   id: IdAggregateSelectionNonNullable;
   name: StringAggregateSelectionNonNullable;
-  createdAt: DateTimeAggregateSelectionNonNullable;
-  updatedAt: DateTimeAggregateSelectionNonNullable;
+  createdAt: DateTimeAggregateSelectionNullable;
+  updatedAt: DateTimeAggregateSelectionNullable;
 };
 
 export type PortfolioAssetAssetsAggregationSelection = {
@@ -762,8 +769,8 @@ export type PortfolioAssetAssetsNodeAggregateSelection = {
   id: IdAggregateSelectionNonNullable;
   ticker: StringAggregateSelectionNonNullable;
   price: FloatAggregateSelectionNonNullable;
-  createdAt: DateTimeAggregateSelectionNonNullable;
-  updatedAt: DateTimeAggregateSelectionNonNullable;
+  createdAt: DateTimeAggregateSelectionNullable;
+  updatedAt: DateTimeAggregateSelectionNullable;
 };
 
 export type PortfolioAssetsConnection = {
@@ -804,8 +811,8 @@ export type PortfolioUserUserNodeAggregateSelection = {
   email: StringAggregateSelectionNonNullable;
   name: StringAggregateSelectionNonNullable;
   password: StringAggregateSelectionNonNullable;
-  createdAt: DateTimeAggregateSelectionNonNullable;
-  updatedAt: DateTimeAggregateSelectionNonNullable;
+  createdAt: DateTimeAggregateSelectionNullable;
+  updatedAt: DateTimeAggregateSelectionNullable;
 };
 
 export type StringAggregateSelectionNonNullable = {
@@ -859,15 +866,15 @@ export type UpdateUsersMutationResponse = {
   users: Array<User>;
 };
 
-export type User = {
+export type User = BaseEntity & {
   __typename?: "User";
   id: Scalars["ID"];
   email: Scalars["String"];
   name: Scalars["String"];
   password: Scalars["String"];
   active: Scalars["Boolean"];
-  createdAt: Scalars["DateTime"];
-  updatedAt: Scalars["DateTime"];
+  createdAt?: Maybe<Scalars["DateTime"]>;
+  updatedAt?: Maybe<Scalars["DateTime"]>;
   portfolio: Array<Portfolio>;
   portfolioAggregate?: Maybe<UserPortfolioPortfolioAggregationSelection>;
   portfolioConnection: UserPortfolioConnection;
@@ -899,8 +906,8 @@ export type UserAggregateSelection = {
   email: StringAggregateSelectionNonNullable;
   name: StringAggregateSelectionNonNullable;
   password: StringAggregateSelectionNonNullable;
-  createdAt: DateTimeAggregateSelectionNonNullable;
-  updatedAt: DateTimeAggregateSelectionNonNullable;
+  createdAt: DateTimeAggregateSelectionNullable;
+  updatedAt: DateTimeAggregateSelectionNullable;
 };
 
 export type UserPortfolioConnection = {
@@ -920,8 +927,8 @@ export type UserPortfolioPortfolioNodeAggregateSelection = {
   __typename?: "UserPortfolioPortfolioNodeAggregateSelection";
   id: IdAggregateSelectionNonNullable;
   name: StringAggregateSelectionNonNullable;
-  createdAt: DateTimeAggregateSelectionNonNullable;
-  updatedAt: DateTimeAggregateSelectionNonNullable;
+  createdAt: DateTimeAggregateSelectionNullable;
+  updatedAt: DateTimeAggregateSelectionNullable;
 };
 
 export type UserPortfolioRelationship = {
@@ -1144,8 +1151,6 @@ export type AssetCategoryCreateFieldInput = {
 export type AssetCategoryCreateInput = {
   name: Scalars["String"];
   active: Scalars["Boolean"];
-  createdAt: Scalars["DateTime"];
-  updatedAt: Scalars["DateTime"];
   assets?: InputMaybe<AssetCategoryAssetsFieldInput>;
 };
 
@@ -1275,8 +1280,6 @@ export type AssetCategoryUpdateFieldInput = {
 export type AssetCategoryUpdateInput = {
   name?: InputMaybe<Scalars["String"]>;
   active?: InputMaybe<Scalars["Boolean"]>;
-  createdAt?: InputMaybe<Scalars["DateTime"]>;
-  updatedAt?: InputMaybe<Scalars["DateTime"]>;
   assets?: InputMaybe<Array<AssetCategoryAssetsUpdateFieldInput>>;
 };
 
@@ -1307,16 +1310,16 @@ export type AssetCategoryWhere = {
   active_NOT?: InputMaybe<Scalars["Boolean"]>;
   createdAt?: InputMaybe<Scalars["DateTime"]>;
   createdAt_NOT?: InputMaybe<Scalars["DateTime"]>;
-  createdAt_IN?: InputMaybe<Array<Scalars["DateTime"]>>;
-  createdAt_NOT_IN?: InputMaybe<Array<Scalars["DateTime"]>>;
+  createdAt_IN?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
+  createdAt_NOT_IN?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
   createdAt_LT?: InputMaybe<Scalars["DateTime"]>;
   createdAt_LTE?: InputMaybe<Scalars["DateTime"]>;
   createdAt_GT?: InputMaybe<Scalars["DateTime"]>;
   createdAt_GTE?: InputMaybe<Scalars["DateTime"]>;
   updatedAt?: InputMaybe<Scalars["DateTime"]>;
   updatedAt_NOT?: InputMaybe<Scalars["DateTime"]>;
-  updatedAt_IN?: InputMaybe<Array<Scalars["DateTime"]>>;
-  updatedAt_NOT_IN?: InputMaybe<Array<Scalars["DateTime"]>>;
+  updatedAt_IN?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
+  updatedAt_NOT_IN?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
   updatedAt_LT?: InputMaybe<Scalars["DateTime"]>;
   updatedAt_LTE?: InputMaybe<Scalars["DateTime"]>;
   updatedAt_GT?: InputMaybe<Scalars["DateTime"]>;
@@ -1364,8 +1367,6 @@ export type AssetCreateInput = {
   ticker: Scalars["String"];
   price: Scalars["Float"];
   active: Scalars["Boolean"];
-  createdAt: Scalars["DateTime"];
-  updatedAt: Scalars["DateTime"];
   category?: InputMaybe<AssetCategoryFieldInput>;
   sector?: InputMaybe<AssetSectorFieldInput>;
   segment?: InputMaybe<AssetSegmentFieldInput>;
@@ -1616,8 +1617,6 @@ export type AssetSectorCreateFieldInput = {
 export type AssetSectorCreateInput = {
   name: Scalars["String"];
   active: Scalars["Boolean"];
-  createdAt: Scalars["DateTime"];
-  updatedAt: Scalars["DateTime"];
   assets?: InputMaybe<AssetSectorAssetsFieldInput>;
 };
 
@@ -1747,8 +1746,6 @@ export type AssetSectorUpdateFieldInput = {
 export type AssetSectorUpdateInput = {
   name?: InputMaybe<Scalars["String"]>;
   active?: InputMaybe<Scalars["Boolean"]>;
-  createdAt?: InputMaybe<Scalars["DateTime"]>;
-  updatedAt?: InputMaybe<Scalars["DateTime"]>;
   assets?: InputMaybe<Array<AssetSectorAssetsUpdateFieldInput>>;
 };
 
@@ -1779,16 +1776,16 @@ export type AssetSectorWhere = {
   active_NOT?: InputMaybe<Scalars["Boolean"]>;
   createdAt?: InputMaybe<Scalars["DateTime"]>;
   createdAt_NOT?: InputMaybe<Scalars["DateTime"]>;
-  createdAt_IN?: InputMaybe<Array<Scalars["DateTime"]>>;
-  createdAt_NOT_IN?: InputMaybe<Array<Scalars["DateTime"]>>;
+  createdAt_IN?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
+  createdAt_NOT_IN?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
   createdAt_LT?: InputMaybe<Scalars["DateTime"]>;
   createdAt_LTE?: InputMaybe<Scalars["DateTime"]>;
   createdAt_GT?: InputMaybe<Scalars["DateTime"]>;
   createdAt_GTE?: InputMaybe<Scalars["DateTime"]>;
   updatedAt?: InputMaybe<Scalars["DateTime"]>;
   updatedAt_NOT?: InputMaybe<Scalars["DateTime"]>;
-  updatedAt_IN?: InputMaybe<Array<Scalars["DateTime"]>>;
-  updatedAt_NOT_IN?: InputMaybe<Array<Scalars["DateTime"]>>;
+  updatedAt_IN?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
+  updatedAt_NOT_IN?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
   updatedAt_LT?: InputMaybe<Scalars["DateTime"]>;
   updatedAt_LTE?: InputMaybe<Scalars["DateTime"]>;
   updatedAt_GT?: InputMaybe<Scalars["DateTime"]>;
@@ -2026,8 +2023,6 @@ export type AssetSegmentCreateFieldInput = {
 export type AssetSegmentCreateInput = {
   name: Scalars["String"];
   active: Scalars["Boolean"];
-  createdAt: Scalars["DateTime"];
-  updatedAt: Scalars["DateTime"];
   assets?: InputMaybe<AssetSegmentAssetsFieldInput>;
 };
 
@@ -2157,8 +2152,6 @@ export type AssetSegmentUpdateFieldInput = {
 export type AssetSegmentUpdateInput = {
   name?: InputMaybe<Scalars["String"]>;
   active?: InputMaybe<Scalars["Boolean"]>;
-  createdAt?: InputMaybe<Scalars["DateTime"]>;
-  updatedAt?: InputMaybe<Scalars["DateTime"]>;
   assets?: InputMaybe<Array<AssetSegmentAssetsUpdateFieldInput>>;
 };
 
@@ -2189,16 +2182,16 @@ export type AssetSegmentWhere = {
   active_NOT?: InputMaybe<Scalars["Boolean"]>;
   createdAt?: InputMaybe<Scalars["DateTime"]>;
   createdAt_NOT?: InputMaybe<Scalars["DateTime"]>;
-  createdAt_IN?: InputMaybe<Array<Scalars["DateTime"]>>;
-  createdAt_NOT_IN?: InputMaybe<Array<Scalars["DateTime"]>>;
+  createdAt_IN?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
+  createdAt_NOT_IN?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
   createdAt_LT?: InputMaybe<Scalars["DateTime"]>;
   createdAt_LTE?: InputMaybe<Scalars["DateTime"]>;
   createdAt_GT?: InputMaybe<Scalars["DateTime"]>;
   createdAt_GTE?: InputMaybe<Scalars["DateTime"]>;
   updatedAt?: InputMaybe<Scalars["DateTime"]>;
   updatedAt_NOT?: InputMaybe<Scalars["DateTime"]>;
-  updatedAt_IN?: InputMaybe<Array<Scalars["DateTime"]>>;
-  updatedAt_NOT_IN?: InputMaybe<Array<Scalars["DateTime"]>>;
+  updatedAt_IN?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
+  updatedAt_NOT_IN?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
   updatedAt_LT?: InputMaybe<Scalars["DateTime"]>;
   updatedAt_LTE?: InputMaybe<Scalars["DateTime"]>;
   updatedAt_GT?: InputMaybe<Scalars["DateTime"]>;
@@ -2240,8 +2233,6 @@ export type AssetUpdateInput = {
   ticker?: InputMaybe<Scalars["String"]>;
   price?: InputMaybe<Scalars["Float"]>;
   active?: InputMaybe<Scalars["Boolean"]>;
-  createdAt?: InputMaybe<Scalars["DateTime"]>;
-  updatedAt?: InputMaybe<Scalars["DateTime"]>;
   category?: InputMaybe<AssetCategoryUpdateFieldInput>;
   sector?: InputMaybe<AssetSectorUpdateFieldInput>;
   segment?: InputMaybe<AssetSegmentUpdateFieldInput>;
@@ -2282,16 +2273,16 @@ export type AssetWhere = {
   active_NOT?: InputMaybe<Scalars["Boolean"]>;
   createdAt?: InputMaybe<Scalars["DateTime"]>;
   createdAt_NOT?: InputMaybe<Scalars["DateTime"]>;
-  createdAt_IN?: InputMaybe<Array<Scalars["DateTime"]>>;
-  createdAt_NOT_IN?: InputMaybe<Array<Scalars["DateTime"]>>;
+  createdAt_IN?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
+  createdAt_NOT_IN?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
   createdAt_LT?: InputMaybe<Scalars["DateTime"]>;
   createdAt_LTE?: InputMaybe<Scalars["DateTime"]>;
   createdAt_GT?: InputMaybe<Scalars["DateTime"]>;
   createdAt_GTE?: InputMaybe<Scalars["DateTime"]>;
   updatedAt?: InputMaybe<Scalars["DateTime"]>;
   updatedAt_NOT?: InputMaybe<Scalars["DateTime"]>;
-  updatedAt_IN?: InputMaybe<Array<Scalars["DateTime"]>>;
-  updatedAt_NOT_IN?: InputMaybe<Array<Scalars["DateTime"]>>;
+  updatedAt_IN?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
+  updatedAt_NOT_IN?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
   updatedAt_LT?: InputMaybe<Scalars["DateTime"]>;
   updatedAt_LTE?: InputMaybe<Scalars["DateTime"]>;
   updatedAt_GT?: InputMaybe<Scalars["DateTime"]>;
@@ -2485,8 +2476,6 @@ export type PortfolioConnectWhere = {
 export type PortfolioCreateInput = {
   name: Scalars["String"];
   active: Scalars["Boolean"];
-  createdAt: Scalars["DateTime"];
-  updatedAt: Scalars["DateTime"];
   user?: InputMaybe<PortfolioUserFieldInput>;
   assets?: InputMaybe<PortfolioAssetsFieldInput>;
 };
@@ -2534,8 +2523,6 @@ export type PortfolioUniqueWhere = {
 export type PortfolioUpdateInput = {
   name?: InputMaybe<Scalars["String"]>;
   active?: InputMaybe<Scalars["Boolean"]>;
-  createdAt?: InputMaybe<Scalars["DateTime"]>;
-  updatedAt?: InputMaybe<Scalars["DateTime"]>;
   user?: InputMaybe<PortfolioUserUpdateFieldInput>;
   assets?: InputMaybe<Array<PortfolioAssetsUpdateFieldInput>>;
 };
@@ -2733,16 +2720,16 @@ export type PortfolioWhere = {
   active_NOT?: InputMaybe<Scalars["Boolean"]>;
   createdAt?: InputMaybe<Scalars["DateTime"]>;
   createdAt_NOT?: InputMaybe<Scalars["DateTime"]>;
-  createdAt_IN?: InputMaybe<Array<Scalars["DateTime"]>>;
-  createdAt_NOT_IN?: InputMaybe<Array<Scalars["DateTime"]>>;
+  createdAt_IN?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
+  createdAt_NOT_IN?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
   createdAt_LT?: InputMaybe<Scalars["DateTime"]>;
   createdAt_LTE?: InputMaybe<Scalars["DateTime"]>;
   createdAt_GT?: InputMaybe<Scalars["DateTime"]>;
   createdAt_GTE?: InputMaybe<Scalars["DateTime"]>;
   updatedAt?: InputMaybe<Scalars["DateTime"]>;
   updatedAt_NOT?: InputMaybe<Scalars["DateTime"]>;
-  updatedAt_IN?: InputMaybe<Array<Scalars["DateTime"]>>;
-  updatedAt_NOT_IN?: InputMaybe<Array<Scalars["DateTime"]>>;
+  updatedAt_IN?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
+  updatedAt_NOT_IN?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
   updatedAt_LT?: InputMaybe<Scalars["DateTime"]>;
   updatedAt_LTE?: InputMaybe<Scalars["DateTime"]>;
   updatedAt_GT?: InputMaybe<Scalars["DateTime"]>;
@@ -2792,8 +2779,6 @@ export type UserCreateInput = {
   name: Scalars["String"];
   password: Scalars["String"];
   active: Scalars["Boolean"];
-  createdAt: Scalars["DateTime"];
-  updatedAt: Scalars["DateTime"];
   portfolio?: InputMaybe<UserPortfolioFieldInput>;
 };
 
@@ -2969,8 +2954,6 @@ export type UserUpdateInput = {
   name?: InputMaybe<Scalars["String"]>;
   password?: InputMaybe<Scalars["String"]>;
   active?: InputMaybe<Scalars["Boolean"]>;
-  createdAt?: InputMaybe<Scalars["DateTime"]>;
-  updatedAt?: InputMaybe<Scalars["DateTime"]>;
   portfolio?: InputMaybe<Array<UserPortfolioUpdateFieldInput>>;
 };
 
@@ -3021,16 +3004,16 @@ export type UserWhere = {
   active_NOT?: InputMaybe<Scalars["Boolean"]>;
   createdAt?: InputMaybe<Scalars["DateTime"]>;
   createdAt_NOT?: InputMaybe<Scalars["DateTime"]>;
-  createdAt_IN?: InputMaybe<Array<Scalars["DateTime"]>>;
-  createdAt_NOT_IN?: InputMaybe<Array<Scalars["DateTime"]>>;
+  createdAt_IN?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
+  createdAt_NOT_IN?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
   createdAt_LT?: InputMaybe<Scalars["DateTime"]>;
   createdAt_LTE?: InputMaybe<Scalars["DateTime"]>;
   createdAt_GT?: InputMaybe<Scalars["DateTime"]>;
   createdAt_GTE?: InputMaybe<Scalars["DateTime"]>;
   updatedAt?: InputMaybe<Scalars["DateTime"]>;
   updatedAt_NOT?: InputMaybe<Scalars["DateTime"]>;
-  updatedAt_IN?: InputMaybe<Array<Scalars["DateTime"]>>;
-  updatedAt_NOT_IN?: InputMaybe<Array<Scalars["DateTime"]>>;
+  updatedAt_IN?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
+  updatedAt_NOT_IN?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
   updatedAt_LT?: InputMaybe<Scalars["DateTime"]>;
   updatedAt_LTE?: InputMaybe<Scalars["DateTime"]>;
   updatedAt_GT?: InputMaybe<Scalars["DateTime"]>;
@@ -3068,7 +3051,7 @@ export interface FloatAggregateInputNonNullable {
   average?: boolean;
   sum?: boolean;
 }
-export interface DateTimeAggregateInputNonNullable {
+export interface DateTimeAggregateInputNullable {
   min?: boolean;
   max?: boolean;
 }
@@ -3077,8 +3060,8 @@ export interface AssetAggregateSelectionInput {
   id?: IdAggregateInputNonNullable;
   ticker?: StringAggregateInputNonNullable;
   price?: FloatAggregateInputNonNullable;
-  createdAt?: DateTimeAggregateInputNonNullable;
-  updatedAt?: DateTimeAggregateInputNonNullable;
+  createdAt?: DateTimeAggregateInputNullable;
+  updatedAt?: DateTimeAggregateInputNullable;
 }
 
 export declare class AssetModel {
@@ -3139,7 +3122,7 @@ export interface FloatAggregateInputNonNullable {
   average?: boolean;
   sum?: boolean;
 }
-export interface DateTimeAggregateInputNonNullable {
+export interface DateTimeAggregateInputNullable {
   min?: boolean;
   max?: boolean;
 }
@@ -3147,8 +3130,8 @@ export interface AssetCategoryAggregateSelectionInput {
   count?: boolean;
   id?: IdAggregateInputNonNullable;
   name?: StringAggregateInputNonNullable;
-  createdAt?: DateTimeAggregateInputNonNullable;
-  updatedAt?: DateTimeAggregateInputNonNullable;
+  createdAt?: DateTimeAggregateInputNullable;
+  updatedAt?: DateTimeAggregateInputNullable;
 }
 
 export declare class AssetCategoryModel {
@@ -3209,7 +3192,7 @@ export interface FloatAggregateInputNonNullable {
   average?: boolean;
   sum?: boolean;
 }
-export interface DateTimeAggregateInputNonNullable {
+export interface DateTimeAggregateInputNullable {
   min?: boolean;
   max?: boolean;
 }
@@ -3217,8 +3200,8 @@ export interface AssetSectorAggregateSelectionInput {
   count?: boolean;
   id?: IdAggregateInputNonNullable;
   name?: StringAggregateInputNonNullable;
-  createdAt?: DateTimeAggregateInputNonNullable;
-  updatedAt?: DateTimeAggregateInputNonNullable;
+  createdAt?: DateTimeAggregateInputNullable;
+  updatedAt?: DateTimeAggregateInputNullable;
 }
 
 export declare class AssetSectorModel {
@@ -3279,7 +3262,7 @@ export interface FloatAggregateInputNonNullable {
   average?: boolean;
   sum?: boolean;
 }
-export interface DateTimeAggregateInputNonNullable {
+export interface DateTimeAggregateInputNullable {
   min?: boolean;
   max?: boolean;
 }
@@ -3287,8 +3270,8 @@ export interface AssetSegmentAggregateSelectionInput {
   count?: boolean;
   id?: IdAggregateInputNonNullable;
   name?: StringAggregateInputNonNullable;
-  createdAt?: DateTimeAggregateInputNonNullable;
-  updatedAt?: DateTimeAggregateInputNonNullable;
+  createdAt?: DateTimeAggregateInputNullable;
+  updatedAt?: DateTimeAggregateInputNullable;
 }
 
 export declare class AssetSegmentModel {
@@ -3349,7 +3332,7 @@ export interface FloatAggregateInputNonNullable {
   average?: boolean;
   sum?: boolean;
 }
-export interface DateTimeAggregateInputNonNullable {
+export interface DateTimeAggregateInputNullable {
   min?: boolean;
   max?: boolean;
 }
@@ -3357,8 +3340,8 @@ export interface PortfolioAggregateSelectionInput {
   count?: boolean;
   id?: IdAggregateInputNonNullable;
   name?: StringAggregateInputNonNullable;
-  createdAt?: DateTimeAggregateInputNonNullable;
-  updatedAt?: DateTimeAggregateInputNonNullable;
+  createdAt?: DateTimeAggregateInputNullable;
+  updatedAt?: DateTimeAggregateInputNullable;
 }
 
 export declare class PortfolioModel {
@@ -3419,7 +3402,7 @@ export interface FloatAggregateInputNonNullable {
   average?: boolean;
   sum?: boolean;
 }
-export interface DateTimeAggregateInputNonNullable {
+export interface DateTimeAggregateInputNullable {
   min?: boolean;
   max?: boolean;
 }
@@ -3429,8 +3412,8 @@ export interface UserAggregateSelectionInput {
   email?: StringAggregateInputNonNullable;
   name?: StringAggregateInputNonNullable;
   password?: StringAggregateInputNonNullable;
-  createdAt?: DateTimeAggregateInputNonNullable;
-  updatedAt?: DateTimeAggregateInputNonNullable;
+  createdAt?: DateTimeAggregateInputNullable;
+  updatedAt?: DateTimeAggregateInputNullable;
 }
 
 export declare class UserModel {
