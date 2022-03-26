@@ -1,0 +1,9 @@
+fragment Portfolio on Portfolio {
+  id
+  name
+  user
+  assets
+  createdAt
+  updatedAt
+  active
+}

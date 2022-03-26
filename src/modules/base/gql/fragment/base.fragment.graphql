@@ -1,0 +1,6 @@
+fragment BaseEntity on BaseEntity {
+  id
+  createdAt
+  updatedAt
+  active
+}

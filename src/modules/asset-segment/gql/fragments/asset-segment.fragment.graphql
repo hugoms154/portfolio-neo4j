@@ -1,0 +1,8 @@
+fragment AssetSegment on AssetSegment {
+  id
+  name
+  assets
+  createdAt
+  updatedAt
+  active
+}

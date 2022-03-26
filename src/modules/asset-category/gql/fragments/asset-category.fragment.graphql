@@ -1,0 +1,8 @@
+fragment AssetCategory on AssetCategory {
+  id
+  name
+  assets
+  createdAt
+  updatedAt
+  active
+}

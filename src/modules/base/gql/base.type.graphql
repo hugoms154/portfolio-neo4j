@@ -1,0 +1,6 @@
+interface BaseEntity {
+  id: ID! @id
+  createdAt: DateTime @timestamp
+  updatedAt: DateTime @timestamp
+  active: Boolean!
+}

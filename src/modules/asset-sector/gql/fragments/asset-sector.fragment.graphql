@@ -1,0 +1,8 @@
+fragment AssetSector on AssetSector {
+  id
+  name
+  assets
+  createdAt
+  updatedAt
+  active
+}

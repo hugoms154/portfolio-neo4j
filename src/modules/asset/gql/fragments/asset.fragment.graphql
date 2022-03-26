@@ -1,0 +1,11 @@
+fragment Asset on Asset {
+  id
+  ticker
+  price
+  category
+  sector
+  segment
+  createdAt
+  updatedAt
+  active
+}
