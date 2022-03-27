@@ -3,7 +3,7 @@ import { mergeTypeDefs } from "@graphql-tools/merge";
 import * as fs from "fs";
 import { print } from "graphql";
 import * as path from "path";
-import { SRC_PATH } from "../../../src-directory";
+import { SRC_PATH } from "@/src-directory";
 
 export function consolidateTypeDefs(writeFs: boolean = false) {
   console.log("Consolidando typeDefs");

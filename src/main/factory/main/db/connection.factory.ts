@@ -1,4 +1,4 @@
-import { Neo4JConnection } from "../../../config/db/neo4j/connection";
+import { Neo4JConnection } from "@main/config/db/neo4j/connection";
 import * as neo4j from "neo4j-driver";
 
 let connection: neo4j.ServerInfo;
