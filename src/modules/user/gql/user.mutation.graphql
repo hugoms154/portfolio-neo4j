@@ -1,0 +1,3 @@
+type Mutation {
+  Authenticate(email: String!, password: String!): Authentication
+}
