@@ -2,7 +2,8 @@
   "verbose": true,
   "ignore": [
     ".git",
-    "node_modules/**/node_modules"
+    "node_modules/**/node_modules",
+    "type-defs.schema.graphql"
   ],
   "env": {
     "NODE_ENV": "development"
