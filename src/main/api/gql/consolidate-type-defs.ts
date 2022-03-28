@@ -8,7 +8,7 @@ import { SRC_PATH } from "@/src-directory";
 export function consolidateTypeDefs(writeFs: boolean = false) {
   console.log("Consolidando typeDefs");
   const modulesPath = path.join(SRC_PATH, "**", "gql", "**", "*");
-  const loadedFiles = loadFilesSync(modulesPath, { extensions: ["type.graphql"] });
+  const loadedFiles = loadFilesSync(modulesPath, { extensions: ["graphql"] });
 
   const typeDefs = mergeTypeDefs(loadedFiles);
 

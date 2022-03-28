@@ -98,6 +98,7 @@ export type QueryUsersAggregateArgs = {
 
 export type Mutation = {
   __typename?: "Mutation";
+  Authenticate?: Maybe<Authentication>;
   createAssets: CreateAssetsMutationResponse;
   deleteAssets: DeleteInfo;
   updateAssets: UpdateAssetsMutationResponse;
@@ -116,6 +117,11 @@ export type Mutation = {
   createUsers: CreateUsersMutationResponse;
   deleteUsers: DeleteInfo;
   updateUsers: UpdateUsersMutationResponse;
+};
+
+export type MutationAuthenticateArgs = {
+  email: Scalars["String"];
+  password: Scalars["String"];
 };
 
 export type MutationCreateAssetsArgs = {
@@ -238,6 +244,11 @@ export enum SortDirection {
   /** Sort by field values in descending order. */
   Desc = "DESC",
 }
+
+export type Authentication = {
+  token: Scalars["String"];
+  user: User;
+};
 
 export type BaseEntity = {
   id: Scalars["ID"];
