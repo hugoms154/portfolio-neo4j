@@ -1,4 +1,4 @@
-type Authentication {
+interface Authentication  {
   user: User!
   token: String!
 }
