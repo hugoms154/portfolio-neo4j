@@ -5,5 +5,5 @@ type Portfolio implements BaseEntity {
   assets: [Asset!]! @relationship(type: "HAS_ASSET", direction: IN)
   createdAt: DateTime @timestamp
   updatedAt: DateTime @timestamp
-  active: Boolean!
+  active: Boolean
 }

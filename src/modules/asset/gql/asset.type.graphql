@@ -7,5 +7,5 @@ type Asset implements BaseEntity {
   segment: AssetSegment @relationship(type: "HAS_ASSET_SEGMENT", direction: OUT)
   createdAt: DateTime @timestamp
   updatedAt: DateTime @timestamp
-  active: Boolean!
+  active: Boolean
 }

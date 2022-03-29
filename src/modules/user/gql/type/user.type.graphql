@@ -4,7 +4,7 @@ type User implements BaseEntity {
   name: String!
   password: String! @private
   portfolio: [Portfolio!]! @relationship(type: "HAS_PORTFOLIO", direction: OUT)
-  active: Boolean!
+  active: Boolean
   createdAt: DateTime @timestamp
   updatedAt: DateTime @timestamp
 }
