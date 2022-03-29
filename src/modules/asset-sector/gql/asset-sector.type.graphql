@@ -4,5 +4,5 @@ type AssetSector implements BaseEntity {
   assets: [Asset!]! @relationship(type: "HAS_ASSET_SECTOR", direction: IN)
   createdAt: DateTime @timestamp
   updatedAt: DateTime @timestamp
-  active: Boolean!
+  active: Boolean
 }

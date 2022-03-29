@@ -2,5 +2,5 @@ interface BaseEntity {
   id: ID! @id
   createdAt: DateTime @timestamp
   updatedAt: DateTime @timestamp
-  active: Boolean! @default(value: true)
+  active: Boolean @default(value: true)
 }

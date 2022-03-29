@@ -4,5 +4,5 @@ type AssetSegment implements BaseEntity {
   assets: [Asset!]! @relationship(type: "HAS_ASSET_SEGMENT", direction: IN)
   createdAt: DateTime @timestamp
   updatedAt: DateTime @timestamp
-  active: Boolean!
+  active: Boolean
 }
