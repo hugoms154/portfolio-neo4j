@@ -17,7 +17,7 @@ export namespace FindUserRepository {
     rootValue?: any;
   }
 
-  export interface Repository {
+  export interface Implementation {
     find(args: Args): Promise<Result>;
   }
 }
