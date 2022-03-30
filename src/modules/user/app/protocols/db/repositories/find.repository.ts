@@ -1,7 +1,4 @@
-import {
-  UserOptions,
-  UserWhere
-} from "@/infra/db/neo4j/ogm-types";
+import { UserOptions, UserWhere } from "@/infra/db/neo4j/ogm-types";
 import { User } from "@/modules/user/domain/models/user";
 import { DocumentNode, SelectionSetNode } from "graphql";
 
