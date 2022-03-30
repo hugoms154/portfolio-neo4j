@@ -1,6 +1,6 @@
 import { ModelMap } from "@/infra/db/neo4j/ogm-types";
 import { consolidateTypeDefs } from "@/main/api/gql/consolidate-type-defs";
-import { neo4jConnectionFactory } from "@/main/factory/main/db/neo4j/connection.factory";
+import { neo4jConnectionFactory } from "@/main/factory/adapters/neo4j/connection.factory";
 import { userResolvers } from "@/modules/auth/gql/resolvers";
 import { OGM } from "@neo4j/graphql-ogm";
 
