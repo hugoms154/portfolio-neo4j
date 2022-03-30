@@ -1,14 +1,20 @@
 import { ModelMap } from "@/infra/db/neo4j/ogm-types";
 import { consolidateTypeDefs } from "@/main/api/gql/consolidate-type-defs";
-import { neo4jConnectionFactory } from "@/main/factory/main/db/connection.factory";
+import { neo4jConnectionFactory } from "@/main/factory/main/db/neo4j/connection.factory";
+import { userResolvers } from "@/modules/auth/gql/resolvers";
 import { OGM } from "@neo4j/graphql-ogm";
 
-export async function configureNeo4jOGM() {
+export async function configureNeo4jOGM(): Promise<OGM<ModelMap>> {
   const driver = await neo4jConnectionFactory();
   const typeDefs = consolidateTypeDefs();
 
-  return new OGM<ModelMap>({
+  const ogm = new OGM<ModelMap>({
+    resolvers: [userResolvers],
     typeDefs,
     driver,
   });
+
+  await ogm.init();
+
+  return ogm;
 }
