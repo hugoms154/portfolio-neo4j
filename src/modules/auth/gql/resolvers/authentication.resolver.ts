@@ -1,37 +1,14 @@
-import { findUserRepositoryFactory } from "@/main/factory/adapters/neo4j/user/find-user-repository.factory";
-import {
-  AuthArgs,
-  AuthResponse
-} from "@/modules/auth/domain/models/authenticate.model";
+import { AuthUseCaseFactory } from "@/main/factory/use-case/auth-use-case.factory";
+import { Auth } from "@/modules/auth/domain/use-case/auth.use-case";
 
 export async function authenticationResolver(
   parent: any,
-  args: AuthArgs,
+  params: Auth.Params,
   context: any
-): Promise<Partial<AuthResponse>> {
-  const { email, password } = args;
-  console.log(args);
-  const findUser = await findUserRepositoryFactory();
+): Promise<Partial<Auth.Response>> {
+  const authUseCase = await AuthUseCaseFactory();
 
-  const [user] = await findUser.find({
-    where: {
-      email
-    },
-    selectionSet: /* GraphQL */ `
-      {
-        id
-        name
-        email
-        __typename
-        portfolio {
-          id
-          __typename
-        }
-      }
-    `,
-  });
+  const { token, user } = await authUseCase.exec(params);
 
-  console.log(user)
-
-  return { token: "token", user };
+  return { token, user };
 }
