@@ -1,5 +1,5 @@
 import { neo4jConnectionFactory } from '@/main/factory/adapters/neo4j/connection.factory';
-import { userResolvers } from '@/modules/auth/gql/resolvers';
+import { authResolvers } from '@/modules/auth/gql/resolvers';
 import { Neo4jGraphQL } from '@neo4j/graphql';
 import { consolidateTypeDefs } from './consolidate-type-defs';
 
@@ -9,7 +9,7 @@ export async function configureNeo4jGraphQL() {
   const typeDefs = consolidateTypeDefs();
 
   return new Neo4jGraphQL({
-    resolvers: [userResolvers],
+    resolvers: [authResolvers],
     typeDefs,
     driver,
   });

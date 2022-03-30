@@ -1,6 +1,6 @@
 import { authenticationResolver } from "./authentication.resolver";
 
-export const userResolvers = {
+export const authResolvers = {
   Mutation: {
     auth: authenticationResolver
   }
