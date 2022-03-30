@@ -1,7 +1,7 @@
 import { TokenProtocol } from "@/shared/protocols/token/token.protocol";
 import * as jwt from "jsonwebtoken";
 
-export class JwtAdapter implements TokenProtocol {
+export class JwtAdapter implements TokenProtocol.Create, TokenProtocol.Verify {
   create(payload: any): string {
     return jwt.sign(payload, process.env.JWT_SECRET as string);
   }
