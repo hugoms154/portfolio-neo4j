@@ -1,4 +1,4 @@
-interface Authentication  {
+type Authentication @exclude {
   user: User!
   token: String!
 }
