@@ -6,7 +6,7 @@ let driver: neo4j.Driver;
 
 export async function neo4jConnectionFactory() {
   try {
-    let connectionInstance;
+    let connectionInstance: Neo4JConnection;
 
     if (!connection) {
       connectionInstance = new Neo4JConnection();
