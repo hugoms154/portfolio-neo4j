@@ -252,7 +252,7 @@ export type Authentication = {
 
 export type BaseEntity = {
   id: Scalars["ID"];
-  active: Scalars["Boolean"];
+  active?: Maybe<Scalars["Boolean"]>;
   createdAt?: Maybe<Scalars["DateTime"]>;
   updatedAt?: Maybe<Scalars["DateTime"]>;
 };
@@ -262,7 +262,7 @@ export type Asset = BaseEntity & {
   id: Scalars["ID"];
   ticker: Scalars["String"];
   price: Scalars["Float"];
-  active: Scalars["Boolean"];
+  active?: Maybe<Scalars["Boolean"]>;
   createdAt?: Maybe<Scalars["DateTime"]>;
   updatedAt?: Maybe<Scalars["DateTime"]>;
   category?: Maybe<AssetCategory>;
@@ -389,7 +389,7 @@ export type AssetCategory = BaseEntity & {
   __typename?: "AssetCategory";
   id: Scalars["ID"];
   name: Scalars["String"];
-  active: Scalars["Boolean"];
+  active?: Maybe<Scalars["Boolean"]>;
   createdAt?: Maybe<Scalars["DateTime"]>;
   updatedAt?: Maybe<Scalars["DateTime"]>;
   assets: Array<Asset>;
@@ -470,7 +470,7 @@ export type AssetSector = BaseEntity & {
   __typename?: "AssetSector";
   id: Scalars["ID"];
   name: Scalars["String"];
-  active: Scalars["Boolean"];
+  active?: Maybe<Scalars["Boolean"]>;
   createdAt?: Maybe<Scalars["DateTime"]>;
   updatedAt?: Maybe<Scalars["DateTime"]>;
   assets: Array<Asset>;
@@ -551,7 +551,7 @@ export type AssetSegment = BaseEntity & {
   __typename?: "AssetSegment";
   id: Scalars["ID"];
   name: Scalars["String"];
-  active: Scalars["Boolean"];
+  active?: Maybe<Scalars["Boolean"]>;
   createdAt?: Maybe<Scalars["DateTime"]>;
   updatedAt?: Maybe<Scalars["DateTime"]>;
   assets: Array<Asset>;
@@ -711,7 +711,7 @@ export type Portfolio = BaseEntity & {
   __typename?: "Portfolio";
   id: Scalars["ID"];
   name: Scalars["String"];
-  active: Scalars["Boolean"];
+  active?: Maybe<Scalars["Boolean"]>;
   createdAt?: Maybe<Scalars["DateTime"]>;
   updatedAt?: Maybe<Scalars["DateTime"]>;
   user?: Maybe<User>;
@@ -883,7 +883,7 @@ export type User = BaseEntity & {
   email: Scalars["String"];
   name: Scalars["String"];
   password: Scalars["String"];
-  active: Scalars["Boolean"];
+  active?: Maybe<Scalars["Boolean"]>;
   createdAt?: Maybe<Scalars["DateTime"]>;
   updatedAt?: Maybe<Scalars["DateTime"]>;
   portfolio: Array<Portfolio>;
@@ -1161,7 +1161,7 @@ export type AssetCategoryCreateFieldInput = {
 
 export type AssetCategoryCreateInput = {
   name: Scalars["String"];
-  active?: Scalars["Boolean"];
+  active?: InputMaybe<Scalars["Boolean"]>;
   assets?: InputMaybe<AssetCategoryAssetsFieldInput>;
 };
 
@@ -1247,7 +1247,7 @@ export type AssetCategoryNodeAggregationWhereInput = {
 
 export type AssetCategoryOnCreateInput = {
   name: Scalars["String"];
-  active?: Scalars["Boolean"];
+  active?: InputMaybe<Scalars["Boolean"]>;
 };
 
 export type AssetCategoryOptions = {
@@ -1377,7 +1377,7 @@ export type AssetConnectWhere = {
 export type AssetCreateInput = {
   ticker: Scalars["String"];
   price: Scalars["Float"];
-  active?: Scalars["Boolean"];
+  active?: InputMaybe<Scalars["Boolean"]>;
   category?: InputMaybe<AssetCategoryFieldInput>;
   sector?: InputMaybe<AssetSectorFieldInput>;
   segment?: InputMaybe<AssetSegmentFieldInput>;
@@ -1398,7 +1398,7 @@ export type AssetDisconnectInput = {
 export type AssetOnCreateInput = {
   ticker: Scalars["String"];
   price: Scalars["Float"];
-  active?: Scalars["Boolean"];
+  active?: InputMaybe<Scalars["Boolean"]>;
 };
 
 export type AssetOptions = {
@@ -1627,7 +1627,7 @@ export type AssetSectorCreateFieldInput = {
 
 export type AssetSectorCreateInput = {
   name: Scalars["String"];
-  active?: Scalars["Boolean"];
+  active?: InputMaybe<Scalars["Boolean"]>;
   assets?: InputMaybe<AssetSectorAssetsFieldInput>;
 };
 
@@ -1713,7 +1713,7 @@ export type AssetSectorNodeAggregationWhereInput = {
 
 export type AssetSectorOnCreateInput = {
   name: Scalars["String"];
-  active?: Scalars["Boolean"];
+  active?: InputMaybe<Scalars["Boolean"]>;
 };
 
 export type AssetSectorOptions = {
@@ -2033,7 +2033,7 @@ export type AssetSegmentCreateFieldInput = {
 
 export type AssetSegmentCreateInput = {
   name: Scalars["String"];
-  active?: Scalars["Boolean"];
+  active?: InputMaybe<Scalars["Boolean"]>;
   assets?: InputMaybe<AssetSegmentAssetsFieldInput>;
 };
 
@@ -2119,7 +2119,7 @@ export type AssetSegmentNodeAggregationWhereInput = {
 
 export type AssetSegmentOnCreateInput = {
   name: Scalars["String"];
-  active?: Scalars["Boolean"];
+  active?: InputMaybe<Scalars["Boolean"]>;
 };
 
 export type AssetSegmentOptions = {
@@ -2486,7 +2486,7 @@ export type PortfolioConnectWhere = {
 
 export type PortfolioCreateInput = {
   name: Scalars["String"];
-  active?: Scalars["Boolean"];
+  active?: InputMaybe<Scalars["Boolean"]>;
   user?: InputMaybe<PortfolioUserFieldInput>;
   assets?: InputMaybe<PortfolioAssetsFieldInput>;
 };
@@ -2503,7 +2503,7 @@ export type PortfolioDisconnectInput = {
 
 export type PortfolioOnCreateInput = {
   name: Scalars["String"];
-  active?: Scalars["Boolean"];
+  active?: InputMaybe<Scalars["Boolean"]>;
 };
 
 export type PortfolioOptions = {
@@ -2789,7 +2789,7 @@ export type UserCreateInput = {
   email: Scalars["String"];
   name: Scalars["String"];
   password: Scalars["String"];
-  active?: Scalars["Boolean"];
+  active?: InputMaybe<Scalars["Boolean"]>;
   portfolio?: InputMaybe<UserPortfolioFieldInput>;
 };
 
@@ -2805,7 +2805,7 @@ export type UserOnCreateInput = {
   email: Scalars["String"];
   name: Scalars["String"];
   password: Scalars["String"];
-  active?: Scalars["Boolean"];
+  active?: InputMaybe<Scalars["Boolean"]>;
 };
 
 export type UserOptions = {
