@@ -1,4 +1,4 @@
-import { neo4jConnectionFactory } from '@/main/factory/main/db/neo4j/connection.factory';
+import { neo4jConnectionFactory } from '@/main/factory/adapters/neo4j/connection.factory';
 import { userResolvers } from '@/modules/auth/gql/resolvers';
 import { Neo4jGraphQL } from '@neo4j/graphql';
 import { consolidateTypeDefs } from './consolidate-type-defs';

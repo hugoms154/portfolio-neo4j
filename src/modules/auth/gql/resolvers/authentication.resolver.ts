@@ -1,4 +1,4 @@
-import { findUserRepositoryFactory } from "@/main/factory/main/db/neo4j/user/find-user-repository.factory";
+import { findUserRepositoryFactory } from "@/main/factory/adapters/neo4j/user/find-user-repository.factory";
 import {
   AuthArgs,
   AuthResponse
