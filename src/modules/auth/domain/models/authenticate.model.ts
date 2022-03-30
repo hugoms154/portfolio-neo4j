@@ -3,5 +3,7 @@ import type {
   Authentication,
 } from "@/infra/db/neo4j/ogm-types";
 
-export type AuthArgs = MutationAuthArgs;
-export type AuthResponse = Authentication;
+export namespace AuthModel {
+  export type Params = MutationAuthArgs;
+  export type Response = Authentication;
+}
