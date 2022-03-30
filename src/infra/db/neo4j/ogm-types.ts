@@ -38,6 +38,8 @@ export type Query = {
   assetSegmentsAggregate: AssetSegmentAggregateSelection;
   portfolios: Array<Portfolio>;
   portfoliosAggregate: PortfolioAggregateSelection;
+  authentications: Array<Authentication>;
+  authenticationsAggregate: AuthenticationAggregateSelection;
   users: Array<User>;
   usersAggregate: UserAggregateSelection;
 };
@@ -87,6 +89,15 @@ export type QueryPortfoliosAggregateArgs = {
   where?: InputMaybe<PortfolioWhere>;
 };
 
+export type QueryAuthenticationsArgs = {
+  where?: InputMaybe<AuthenticationWhere>;
+  options?: InputMaybe<AuthenticationOptions>;
+};
+
+export type QueryAuthenticationsAggregateArgs = {
+  where?: InputMaybe<AuthenticationWhere>;
+};
+
 export type QueryUsersArgs = {
   where?: InputMaybe<UserWhere>;
   options?: InputMaybe<UserOptions>;
@@ -114,6 +125,9 @@ export type Mutation = {
   createPortfolios: CreatePortfoliosMutationResponse;
   deletePortfolios: DeleteInfo;
   updatePortfolios: UpdatePortfoliosMutationResponse;
+  createAuthentications: CreateAuthenticationsMutationResponse;
+  deleteAuthentications: DeleteInfo;
+  updateAuthentications: UpdateAuthenticationsMutationResponse;
   createUsers: CreateUsersMutationResponse;
   deleteUsers: DeleteInfo;
   updateUsers: UpdateUsersMutationResponse;
@@ -219,6 +233,19 @@ export type MutationUpdatePortfoliosArgs = {
   connectOrCreate?: InputMaybe<PortfolioConnectOrCreateInput>;
 };
 
+export type MutationCreateAuthenticationsArgs = {
+  input: Array<AuthenticationCreateInput>;
+};
+
+export type MutationDeleteAuthenticationsArgs = {
+  where?: InputMaybe<AuthenticationWhere>;
+};
+
+export type MutationUpdateAuthenticationsArgs = {
+  where?: InputMaybe<AuthenticationWhere>;
+  update?: InputMaybe<AuthenticationUpdateInput>;
+};
+
 export type MutationCreateUsersArgs = {
   input: Array<UserCreateInput>;
 };
@@ -244,11 +271,6 @@ export enum SortDirection {
   /** Sort by field values in descending order. */
   Desc = "DESC",
 }
-
-export type Authentication = {
-  token: Scalars["String"];
-  user: User;
-};
 
 export type BaseEntity = {
   id: Scalars["ID"];
@@ -628,6 +650,18 @@ export type AssetSegmentRelationship = {
   node: AssetSegment;
 };
 
+export type Authentication = {
+  __typename?: "Authentication";
+  token: Scalars["String"];
+  user: User;
+};
+
+export type AuthenticationAggregateSelection = {
+  __typename?: "AuthenticationAggregateSelection";
+  count: Scalars["Int"];
+  token: StringAggregateSelectionNonNullable;
+};
+
 export type CreateAssetCategoriesMutationResponse = {
   __typename?: "CreateAssetCategoriesMutationResponse";
   info: CreateInfo;
@@ -650,6 +684,12 @@ export type CreateAssetsMutationResponse = {
   __typename?: "CreateAssetsMutationResponse";
   info: CreateInfo;
   assets: Array<Asset>;
+};
+
+export type CreateAuthenticationsMutationResponse = {
+  __typename?: "CreateAuthenticationsMutationResponse";
+  info: CreateInfo;
+  authentications: Array<Authentication>;
 };
 
 export type CreateInfo = {
@@ -854,6 +894,12 @@ export type UpdateAssetsMutationResponse = {
   __typename?: "UpdateAssetsMutationResponse";
   info: UpdateInfo;
   assets: Array<Asset>;
+};
+
+export type UpdateAuthenticationsMutationResponse = {
+  __typename?: "UpdateAuthenticationsMutationResponse";
+  info: UpdateInfo;
+  authentications: Array<Authentication>;
 };
 
 export type UpdateInfo = {
@@ -2315,6 +2361,41 @@ export type AssetWhere = {
   segmentConnection_NOT?: InputMaybe<AssetSegmentConnectionWhere>;
 };
 
+export type AuthenticationCreateInput = {
+  token: Scalars["String"];
+};
+
+export type AuthenticationOptions = {
+  /** Specify one or more AuthenticationSort objects to sort Authentications by. The sorts will be applied in the order in which they are arranged in the array. */
+  sort?: InputMaybe<Array<AuthenticationSort>>;
+  limit?: InputMaybe<Scalars["Int"]>;
+  offset?: InputMaybe<Scalars["Int"]>;
+};
+
+/** Fields to sort Authentications by. The order in which sorts are applied is not guaranteed when specifying many fields in one AuthenticationSort object. */
+export type AuthenticationSort = {
+  token?: InputMaybe<SortDirection>;
+};
+
+export type AuthenticationUpdateInput = {
+  token?: InputMaybe<Scalars["String"]>;
+};
+
+export type AuthenticationWhere = {
+  OR?: InputMaybe<Array<AuthenticationWhere>>;
+  AND?: InputMaybe<Array<AuthenticationWhere>>;
+  token?: InputMaybe<Scalars["String"]>;
+  token_NOT?: InputMaybe<Scalars["String"]>;
+  token_IN?: InputMaybe<Array<Scalars["String"]>>;
+  token_NOT_IN?: InputMaybe<Array<Scalars["String"]>>;
+  token_CONTAINS?: InputMaybe<Scalars["String"]>;
+  token_NOT_CONTAINS?: InputMaybe<Scalars["String"]>;
+  token_STARTS_WITH?: InputMaybe<Scalars["String"]>;
+  token_NOT_STARTS_WITH?: InputMaybe<Scalars["String"]>;
+  token_ENDS_WITH?: InputMaybe<Scalars["String"]>;
+  token_NOT_ENDS_WITH?: InputMaybe<Scalars["String"]>;
+};
+
 export type PortfolioAssetsAggregateInput = {
   count?: InputMaybe<Scalars["Int"]>;
   count_LT?: InputMaybe<Scalars["Int"]>;
@@ -3417,6 +3498,70 @@ export interface DateTimeAggregateInputNullable {
   min?: boolean;
   max?: boolean;
 }
+export interface AuthenticationAggregateSelectionInput {
+  count?: boolean;
+  token?: StringAggregateInputNonNullable;
+}
+
+export declare class AuthenticationModel {
+  public find(args?: {
+    where?: AuthenticationWhere;
+
+    options?: AuthenticationOptions;
+    selectionSet?: string | DocumentNode | SelectionSetNode;
+    args?: any;
+    context?: any;
+    rootValue?: any;
+  }): Promise<Authentication[]>;
+  public create(args: {
+    input: AuthenticationCreateInput[];
+    selectionSet?: string | DocumentNode | SelectionSetNode;
+    args?: any;
+    context?: any;
+    rootValue?: any;
+  }): Promise<CreateAuthenticationsMutationResponse>;
+  public update(args: {
+    where?: AuthenticationWhere;
+    update?: AuthenticationUpdateInput;
+
+    selectionSet?: string | DocumentNode | SelectionSetNode;
+    args?: any;
+    context?: any;
+    rootValue?: any;
+  }): Promise<UpdateAuthenticationsMutationResponse>;
+  public delete(args: {
+    where?: AuthenticationWhere;
+
+    context?: any;
+    rootValue: any;
+  }): Promise<{ nodesDeleted: number; relationshipsDeleted: number }>;
+  public aggregate(args: {
+    where?: AuthenticationWhere;
+
+    aggregate: AuthenticationAggregateSelectionInput;
+    context?: any;
+    rootValue?: any;
+  }): Promise<AuthenticationAggregateSelection>;
+}
+
+export interface IdAggregateInputNonNullable {
+  shortest?: boolean;
+  longest?: boolean;
+}
+export interface StringAggregateInputNonNullable {
+  shortest?: boolean;
+  longest?: boolean;
+}
+export interface FloatAggregateInputNonNullable {
+  max?: boolean;
+  min?: boolean;
+  average?: boolean;
+  sum?: boolean;
+}
+export interface DateTimeAggregateInputNullable {
+  min?: boolean;
+  max?: boolean;
+}
 export interface UserAggregateSelectionInput {
   count?: boolean;
   id?: IdAggregateInputNonNullable;
@@ -3477,5 +3622,6 @@ export interface ModelMap {
   AssetSector: AssetSectorModel;
   AssetSegment: AssetSegmentModel;
   Portfolio: PortfolioModel;
+  Authentication: AuthenticationModel;
   User: UserModel;
 }
