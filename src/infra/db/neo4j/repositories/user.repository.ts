@@ -1,10 +1,10 @@
-export { UserModel } from "@/infra/db/neo4j/ogm-types";
 import {
   CreateUserRepository,
   FindUserRepository,
 } from "@/modules/user/app/protocols/db/repositories";
 import { OGM } from "@neo4j/graphql-ogm";
-import { UserModel } from "./user.repository";
+// TODO: What to do with this?
+import { UserModel } from "@/infra/db/neo4j/ogm-types";
 
 export class UserRepository
   implements CreateUserRepository.Repository, FindUserRepository.Implementation
