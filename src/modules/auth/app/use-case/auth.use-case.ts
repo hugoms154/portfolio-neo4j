@@ -56,7 +56,7 @@ export class AuthUseCase implements Auth.UseCase {
       throw new ApolloError("Couldn't perform this action");
     }
 
-    const token = this.token.create(user);
+    const token = this.token.create({ id: user.id });
 
     return { token, user };
   }
