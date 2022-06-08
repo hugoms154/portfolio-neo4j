@@ -21,33 +21,8 @@ export class AuthUseCase implements Auth.UseCase {
       selectionSet: /* GraphQL */ `
         {
           id
-          email
-          name
           password
           active
-          createdAt
-          updatedAt
-          portfolio {
-            id
-            name
-            assets {
-              id
-              ticker
-              price
-              category {
-                id
-                name
-              }
-              sector {
-                id
-                name
-              }
-              segment {
-                id
-                name
-              }
-            }
-          }
         }
       `,
     });
