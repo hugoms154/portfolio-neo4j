@@ -7,7 +7,7 @@ import { OGM } from "@neo4j/graphql-ogm";
 import { UserModel } from "@/infra/db/neo4j/ogm-types";
 
 export class UserRepository
-  implements CreateUserRepository.Repository, FindUserRepository.Implementation
+  implements CreateUserRepository, FindUserRepository
 {
   private repository: UserModel;
 

@@ -1,5 +1,14 @@
-import { CreateUsersMutationResponse, UserCreateInput } from '@/infra/db/neo4j/ogm-types';
-import { DocumentNode, SelectionSetNode } from 'graphql';
+import {
+  CreateUsersMutationResponse,
+  UserCreateInput,
+} from "@/infra/db/neo4j/ogm-types";
+import { DocumentNode, SelectionSetNode } from "graphql";
+
+export interface CreateUserRepository {
+  create(
+    args: CreateUserRepository.Params
+  ): Promise<CreateUserRepository.Result>;
+}
 
 export namespace CreateUserRepository {
   export type Result = CreateUsersMutationResponse;
@@ -10,9 +19,5 @@ export namespace CreateUserRepository {
     args?: any;
     context?: any;
     rootValue?: any;
-  }
-
-  export interface Repository {
-    create(args: CreateUserRepository.Params): Promise<CreateUserRepository.Result>;
   }
 }
