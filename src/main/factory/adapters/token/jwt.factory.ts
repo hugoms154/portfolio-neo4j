@@ -1,5 +1,5 @@
 import { JwtAdapter } from "@/infra/token/jwt";
 
-export function JWTFactory(){
+export function JwtTokenFactory(){
   return new JwtAdapter();
 }
