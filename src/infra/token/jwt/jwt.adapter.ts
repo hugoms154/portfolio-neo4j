@@ -1,12 +1,23 @@
 import { TokenProtocol } from "@/shared/protocols/token/token.protocol";
+import { ApolloError } from "apollo-server-core";
 import * as jwt from "jsonwebtoken";
 
 export class JwtAdapter implements TokenProtocol.Create, TokenProtocol.Verify {
-  create(payload: any): string {
-    return jwt.sign(payload, process.env.JWT_SECRET as string);
+  private secret: string;
+
+  constructor() {
+    this.secret = process.env.JWT_SECRET;
+
+    if (!this.secret) {
+      throw new ApolloError("Couldn't find JWT_SECRET environment variable");
+    }
   }
 
-  verify(token: string) {
-    return jwt.verify(token, process.env.JWT_SECRET as string);
+  create(payload: TokenProtocol.PayloadTypes): string {
+    return jwt.sign(payload, this.secret, { expiresIn: "1d" });
+  }
+
+  verify<TokenData>(token: string): TokenProtocol.BaseToken<TokenData> {
+    return jwt.verify(token, this.secret) as TokenProtocol.BaseToken<TokenData>;
   }
 }
