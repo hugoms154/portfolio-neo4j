@@ -17,6 +17,7 @@ export class AuthUseCase implements Auth.UseCase {
     const [user] = await this.findUserRepo.find({
       where: {
         email: params.email,
+        active: true,
       },
       selectionSet: /* GraphQL */ `
         {
