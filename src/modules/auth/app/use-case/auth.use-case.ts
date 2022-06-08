@@ -5,7 +5,7 @@ import { ApolloError } from "apollo-server-core";
 
 export class AuthUseCase implements Auth.UseCase {
   constructor(
-    private findUserRepo: FindUserRepository.Implementation,
+    private findUserRepo: FindUserRepository,
     private tokenAdapter: TokenProtocol.Create
   ) {
     if (this.findUserRepo === undefined) {
