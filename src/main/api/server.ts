@@ -1,3 +1,4 @@
+import { Env } from "@/main/config/system";
 import { configureGraphQLServer } from "./gql/server";
 import { configureRESTServer } from "./rest/server";
 
@@ -13,16 +14,14 @@ export async function startServer() {
   });
 
   await new Promise<void>((resolve) =>
-    nodeServer.listen({ port: process.env.PORT || 4000 }, resolve)
+    nodeServer.listen({ port: Env.PORT || 4000 }, resolve)
   );
 
-  const messageForLocalhost = `http://localhost:${process.env.PORT}${graphqlServer.graphqlPath}`;
-  const messageForProduction = `:port/endpoint :${process.env.PORT}${graphqlServer.graphqlPath}`;
+  const messageForLocalhost = `http://localhost:${Env.PORT}${graphqlServer.graphqlPath}`;
+  const messageForProduction = `:port/endpoint :${Env.PORT}${graphqlServer.graphqlPath}`;
   console.log(
     `🚀 Server ready at ${
-      process.env.NODE_ENV === "production"
-        ? messageForProduction
-        : messageForLocalhost
+      Env.NODE_ENV === "production" ? messageForProduction : messageForLocalhost
     }`
   );
 }

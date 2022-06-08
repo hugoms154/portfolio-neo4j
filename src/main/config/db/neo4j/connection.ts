@@ -1,3 +1,4 @@
+import { Env } from "@/main/config/system";
 import * as neo4j from "neo4j-driver";
 
 export class Neo4JConnection {
@@ -9,10 +10,10 @@ export class Neo4JConnection {
     password: string = "123123"
   ) {
     this.driver = neo4j.driver(
-      process.env.NEO4J_URL ?? uri,
+      Env.NEO4J_URL ?? uri,
       neo4j.auth.basic(
-        process.env.NEO4J_USER ?? user,
-        process.env.NEO4J_PASSWORD ?? password
+        Env.NEO4J_USER ?? user,
+        Env.NEO4J_PASSWORD ?? password
       )
     );
   }
