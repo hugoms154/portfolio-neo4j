@@ -6,7 +6,7 @@ import { ApolloError } from "apollo-server-core";
 export class AuthUseCase implements Auth.UseCase {
   constructor(
     private findUserRepo: FindUserRepository,
-    private tokenAdapter: TokenProtocol.Create
+    private token: TokenProtocol.Create
   ) {
     if (this.findUserRepo === undefined) {
       throw new ApolloError("FindUserRepository is undefined");
@@ -56,7 +56,7 @@ export class AuthUseCase implements Auth.UseCase {
       throw new ApolloError("Couldn't perform this action");
     }
 
-    const token = this.tokenAdapter.create(user);
+    const token = this.token.create(user);
 
     return { token, user };
   }
