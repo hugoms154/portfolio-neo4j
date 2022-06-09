@@ -1,14 +1,20 @@
+import { ProtocolError } from "@/shared/errors";
 import { TokenProtocol } from "@/shared/protocols/token/token.protocol";
-import { ApolloError } from "apollo-server-core";
 import * as jwt from "jsonwebtoken";
 
 export class JwtAdapter implements TokenProtocol.Create, TokenProtocol.Verify {
   constructor(
     private readonly secret: string,
     private readonly expiresIn: string
-    ) {
+  ) {
     if (!this.secret) {
-      throw new ApolloError("Couldn't find JWT_SECRET environment variable");
+      throw new ProtocolError("Couldn't find JWT_SECRET environment variable");
+    }
+
+    if (!this.expiresIn) {
+      throw new ProtocolError(
+        "Couldn't find JWT_EXPIRES_IN environment variable"
+      );
     }
   }
 
