@@ -1,6 +1,6 @@
-import { TokenProtocol } from "@/shared/protocols/token/token.protocol";
 import { Auth } from "@/modules/auth/domain/use-case/auth.use-case";
 import { FindUserRepository } from "@/modules/user/app/protocols/db/repositories/find.repository";
+import { TokenProtocol } from "@/shared/protocols/token/token.protocol";
 import { ApolloError } from "apollo-server-core";
 
 export class AuthUseCase implements Auth.UseCase {
