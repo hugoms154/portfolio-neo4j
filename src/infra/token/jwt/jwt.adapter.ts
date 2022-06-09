@@ -1,4 +1,3 @@
-import { Env } from "@/main/config/system";
 import { TokenProtocol } from "@/shared/protocols/token/token.protocol";
 import { ApolloError } from "apollo-server-core";
 import * as jwt from "jsonwebtoken";
