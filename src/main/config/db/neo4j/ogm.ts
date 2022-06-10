@@ -1,7 +1,6 @@
 import { ModelMap } from "@/infra/db/neo4j/ogm-types";
 import { consolidateTypeDefs } from "@/main/api/gql/consolidate-type-defs";
 import { neo4jConnectionFactory } from "@/main/factory/adapters/neo4j/connection.factory";
-import { AppResolverFactory } from "@/main/factory/gql/app.resolver.factory";
 import { OGM } from "@neo4j/graphql-ogm";
 
 export async function configureNeo4jOGM(): Promise<OGM<ModelMap>> {
@@ -9,7 +8,6 @@ export async function configureNeo4jOGM(): Promise<OGM<ModelMap>> {
   const typeDefs = consolidateTypeDefs();
 
   const ogm = new OGM<ModelMap>({
-    resolvers: [await AppResolverFactory()],
     typeDefs,
     driver,
   });

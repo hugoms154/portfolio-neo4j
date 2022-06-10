@@ -5,7 +5,5 @@ export async function AppResolverFactory() {
     Mutation: {
       auth: await AuthResolverFactory(),
     },
-    Query: {},
-    Subscription: {},
   };
 }
