@@ -6,7 +6,6 @@ import { OGM } from "@neo4j/graphql-ogm";
 export async function configureNeo4jOGM(): Promise<OGM<ModelMap>> {
   const driver = await neo4jConnectionFactory();
   const typeDefs = consolidateTypeDefs();
-
   const ogm = new OGM<ModelMap>({
     typeDefs,
     driver,
