@@ -21,7 +21,7 @@ export class UserRepository
     return this.repository.create(params);
   }
 
-  find(params: FindUserRepository.Args): Promise<FindUserRepository.Result> {
+  find(params: FindUserRepository.Params): Promise<FindUserRepository.Result> {
     return this.repository.find(params);
   }
 }

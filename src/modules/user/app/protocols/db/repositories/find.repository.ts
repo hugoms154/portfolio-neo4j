@@ -3,7 +3,7 @@ import { User } from "@/modules/user/domain/models/user";
 import { DocumentNode, SelectionSetNode } from "graphql";
 
 export interface FindUserRepository {
-  find(args: FindUserRepository.Args): Promise<FindUserRepository.Result>;
+  find(args: FindUserRepository.Params): Promise<FindUserRepository.Result>;
 }
 export namespace FindUserRepository {
   type Where = UserWhere;
@@ -11,7 +11,7 @@ export namespace FindUserRepository {
 
   export type Result = User[];
 
-  export interface Args {
+  export interface Params {
     where?: Where;
     options?: Options;
     selectionSet?: string | DocumentNode | SelectionSetNode;
