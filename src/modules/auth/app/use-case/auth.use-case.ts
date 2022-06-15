@@ -1,12 +1,12 @@
 import { Auth } from "@/modules/auth/domain/use-case/auth.use-case";
 import { FindUserRepository } from "@/modules/user/app/protocols/db/repositories/find.repository";
-import { TokenProtocol } from "@/shared/protocols/token/token.protocol";
+import { CreateToken } from "@/shared/protocols/token/token.protocol";
 import { ApolloError } from "apollo-server-core";
 
 export class AuthUseCase implements Auth.UseCase {
   constructor(
     private findUserRepo: FindUserRepository,
-    private token: TokenProtocol.Create
+    private token: CreateToken
   ) {
     if (this.findUserRepo === undefined) {
       throw new ApolloError("FindUserRepository is undefined");
