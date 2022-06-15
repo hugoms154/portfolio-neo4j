@@ -10,6 +10,10 @@ export class JwtAdapter implements CreateToken, VerifyToken {
     if (!this.secret) {
       throw new ApolloError("Couldn't find JWT_SECRET environment variable");
     }
+
+    if (!this.expiresIn) {
+      throw new ApolloError("Couldn't find JWT_EXPIRES_IN environment variable");
+    }
   }
 
   create(payload: TokenProtocol.PayloadTypes): string {
