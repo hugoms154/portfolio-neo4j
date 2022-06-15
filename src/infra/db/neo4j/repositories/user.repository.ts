@@ -2,26 +2,21 @@ import {
   CreateUserRepository,
   FindUserRepository,
 } from "@/modules/user/app/protocols/db/repositories";
-import { OGM } from "@neo4j/graphql-ogm";
 // TODO: What to do with this?
 import { UserModel } from "@/infra/db/neo4j/ogm-types";
 
 export class UserRepository
   implements CreateUserRepository, FindUserRepository
 {
-  private repository: UserModel;
-
-  constructor(ogm: OGM) {
-    this.repository = ogm.model("User");
-  }
+  constructor(private readonly ogm: UserModel) {}
 
   create(
     params: CreateUserRepository.Params
   ): Promise<CreateUserRepository.Result> {
-    return this.repository.create(params);
+    return this.ogm.create(params);
   }
 
   find(params: FindUserRepository.Params): Promise<FindUserRepository.Result> {
-    return this.repository.find(params);
+    return this.ogm.find(params);
   }
 }
