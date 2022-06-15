@@ -1,8 +1,8 @@
-import { TokenProtocol } from "@/shared/protocols/token/token.protocol";
+import { CreateToken, TokenProtocol, VerifyToken } from "@/shared/protocols/token/token.protocol";
 import { ApolloError } from "apollo-server-core";
 import * as jwt from "jsonwebtoken";
 
-export class JwtAdapter implements TokenProtocol.Create, TokenProtocol.Verify {
+export class JwtAdapter implements CreateToken, VerifyToken {
   constructor(
     private readonly secret: string,
     private readonly expiresIn: string

@@ -1,3 +1,11 @@
+export interface CreateToken {
+  create(payload: TokenProtocol.PayloadTypes): string;
+}
+
+export interface VerifyToken {
+  verify<TokenData>(token: string): TokenProtocol.BaseToken<TokenData>;
+}
+
 export namespace TokenProtocol {
   export type PayloadTypes = Record<
     string,
@@ -12,12 +20,5 @@ export namespace TokenProtocol {
     iat?: number | undefined;
     data: Data;
     [key: string]: any;
-  }
-  export interface Create {
-    create(payload: PayloadTypes): string;
-  }
-
-  export interface Verify {
-    verify<TokenData>(token: string): BaseToken<TokenData>;
   }
 }
