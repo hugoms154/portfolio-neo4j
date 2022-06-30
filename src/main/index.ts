@@ -1,5 +1,5 @@
 import { startServer } from "./api/server";
-import dotenv from 'dotenv'
+import { Env } from "./config/system";
 
-dotenv.config()
+Env.setup();
 startServer();
