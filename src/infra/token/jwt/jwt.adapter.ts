@@ -1,18 +1,26 @@
-import { CreateToken, TokenProtocol, VerifyToken } from "@/shared/protocols/token/token.protocol";
-import { ApolloError } from "apollo-server-core";
-import * as jwt from "jsonwebtoken";
+import { InternalServerError } from "@/shared/errors";
+import {
+  CreateToken,
+  TokenProtocol,
+  VerifyToken,
+} from "@/shared/protocols/token/token.protocol";
+import jwt from "jsonwebtoken";
 
 export class JwtAdapter implements CreateToken, VerifyToken {
   constructor(
     private readonly secret: string,
     private readonly expiresIn: string
-    ) {
+  ) {
     if (!this.secret) {
-      throw new ApolloError("Couldn't find JWT_SECRET environment variable");
+      throw new InternalServerError(
+        "Couldn't find JWT_SECRET environment variable"
+      );
     }
 
     if (!this.expiresIn) {
-      throw new ApolloError("Couldn't find JWT_EXPIRES_IN environment variable");
+      throw new InternalServerError(
+        "Couldn't find JWT_EXPIRES_IN environment variable"
+      );
     }
   }
 

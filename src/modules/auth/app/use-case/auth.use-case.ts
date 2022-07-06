@@ -1,7 +1,7 @@
 import { Auth } from "@/modules/auth/domain/use-case/auth.use-case";
 import { FindUserRepository } from "@/modules/user/app/protocols/db/repositories/find.repository";
+import { InternalServerError } from "@/shared/errors";
 import { CreateToken } from "@/shared/protocols/token/token.protocol";
-import { ApolloError } from "apollo-server-core";
 
 export class AuthUseCase implements Auth.UseCase {
   constructor(
@@ -9,7 +9,7 @@ export class AuthUseCase implements Auth.UseCase {
     private token: CreateToken
   ) {
     if (this.findUserRepo === undefined) {
-      throw new ApolloError("FindUserRepository is undefined");
+      throw new InternalServerError("FindUserRepository is undefined");
     }
   }
 
@@ -29,7 +29,7 @@ export class AuthUseCase implements Auth.UseCase {
     });
 
     if (!(user.password === params.password) || !user) {
-      throw new ApolloError("Couldn't perform this action");
+      throw new InternalServerError("Couldn't perform this action");
     }
 
     const token = this.token.create({ id: user.id });
